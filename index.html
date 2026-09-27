@@ -501,8 +501,8 @@
 
   /* ---- Motion ---- */
   @media (prefers-reduced-motion: no-preference) {
-    .js .rv { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .js .rv.in { opacity: 1; transform: none; }
+    .js .rv { transition: opacity 0.6s ease, transform 0.6s ease; }
+    .js .rv.pending { opacity: 0; transform: translateY(18px); }
     .js .hero-content > * { animation: rise 0.7s ease both; }
     .js .hero-content > :nth-child(2) { animation-delay: 0.1s; }
     .js .hero-content > :nth-child(3) { animation-delay: 0.2s; }
@@ -747,12 +747,17 @@
     nav.classList.toggle('scrolled', window.scrollY > 8);
   }, { passive: true });
 
+  // Only sections below the first screen animate in; everything else is visible at rest.
+  const below = [...document.querySelectorAll('.rv')]
+    .filter(el => el.getBoundingClientRect().top > window.innerHeight * 0.9);
+  below.forEach(el => el.classList.add('pending'));
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      if (e.isIntersecting) { e.target.classList.remove('pending'); io.unobserve(e.target); }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  below.forEach(el => io.observe(el));
+  setTimeout(() => below.forEach(el => el.classList.remove('pending')), 4000);
 </script>
 </body>
 </html>
