@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Adapt2Golf | Inclusive Golf Academy</title>
+<meta name="description" content="Adapt2Golf makes golf accessible to anyone who wants to play — regardless of disability, ability, experience, or resources. Adaptive instruction, school clinics, and inclusive events on Chicago's North Shore.">
+<meta property="og:title" content="Adapt2Golf | Inclusive Golf Academy">
+<meta property="og:description" content="Making golf accessible to anyone who wants to play. Adapt. Learn. Play.">
+<meta property="og:image" content="https://adapt2golf.org/images/logo.webp">
+<meta property="og:url" content="https://adapt2golf.org">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/webp" href="images/logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap">
+<style>
+  html, body { margin: 0; padding: 0; }
+  img { max-width: 100%; }
+  html { scroll-behavior: smooth; }
+  :root {
+    --navy: #0C1A2E;
+    --navy-mid: #142240;
+    --sky: #3B9FD9;
+    --sky-glow: rgba(59,159,217,0.25);
+    --green: #2E8B47;
+    --green-glow: rgba(46,139,71,0.2);
+    --gold: #D4A843;
+    --bg: #FAFBFC;
+    --bg-alt: #F1F3F7;
+    --surface: #FFFFFF;
+    --border: rgba(12,26,46,0.06);
+    --border-hover: rgba(12,26,46,0.12);
+    --text-primary: #1A2036;
+    --text-secondary: #5A6478;
+    --text-muted: #8B93A4;
+    --gradient-hero: linear-gradient(170deg, #0C1A2E 0%, #142240 40%, #1A3055 100%);
+    --gradient-accent: linear-gradient(135deg, var(--sky), var(--green));
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.04);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+    --shadow-glow: 0 0 40px var(--sky-glow), 0 0 80px rgba(59,159,217,0.08);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0A0F18;
+      --bg-alt: #0E1520;
+      --surface: #151D2C;
+      --border: rgba(59,159,217,0.08);
+      --border-hover: rgba(59,159,217,0.16);
+      --text-primary: #E4E8F0;
+      --text-secondary: #98A2B6;
+      --text-muted: #6B7590;
+      --gradient-hero: linear-gradient(170deg, #060A12 0%, #0A1020 40%, #0E1830 100%);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.25);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.3);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0A0F18;
+    --bg-alt: #0E1520;
+    --surface: #151D2C;
+    --border: rgba(59,159,217,0.08);
+    --border-hover: rgba(59,159,217,0.16);
+    --text-primary: #E4E8F0;
+    --text-secondary: #98A2B6;
+    --text-muted: #6B7590;
+    --gradient-hero: linear-gradient(170deg, #060A12 0%, #0A1020 40%, #0E1830 100%);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.25);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.3);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.7;
+    padding-inline: 0;
+  }
+  h1,h2,h3,h4 {
+    font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
+    line-height: 1.1;
+    text-wrap: balance;
+    color: var(--text-primary);
+  }
+
+  /* ---- NAV ---- */
+  .nav {
+    position: fixed;
+    top: env(safe-area-inset-top, 0px);
+    left: 0; right: 0;
+    z-index: 200;
+    padding: 0 24px;
+    transition: background 0.4s, box-shadow 0.4s, backdrop-filter 0.4s;
+  }
+  .nav.scrolled {
+    background: rgba(12,26,46,0.92);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 2px 24px rgba(0,0,0,0.2);
+  }
+  .nav-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .nav-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 2px;
+  }
+  .nav-brand b { color: var(--sky); }
+  .nav-links { display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; }
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    transition: color 0.25s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0; right: 0;
+    height: 2px;
+    background: var(--sky);
+    transform: scaleX(0);
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .nav-links a:hover { color: #fff; }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  @media (max-width: 600px) {
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 0.72rem; letter-spacing: 0.4px; }
+  }
+
+  /* ---- HERO ---- */
+  .hero {
+    background: var(--gradient-hero);
+    min-height: min(90vh, 800px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 24px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.12;
+    pointer-events: none;
+  }
+  .hero-bg-glow.g1 { background: var(--sky); top: -100px; right: -100px; }
+  .hero-bg-glow.g2 { background: var(--green); bottom: -200px; left: -150px; opacity: 0.08; }
+  .hero-bg-glow.g3 { background: var(--gold); top: 50%; left: 60%; width: 300px; height: 300px; opacity: 0.06; }
+
+  .hero-logo-wrap {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 36px;
+  }
+  .hero-logo-ring {
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    border: 2px solid rgba(59,159,217,0.2);
+    animation: ring-pulse 3s ease-in-out infinite;
+  }
+  .hero-logo-ring.r2 { inset: -24px; border-color: rgba(59,159,217,0.08); animation-delay: 1s; }
+  @keyframes ring-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.04); opacity: 0.5; }
+  }
+  .hero-logo {
+    width: 260px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 8px 32px rgba(0,0,0,0.4));
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-text { position: relative; z-index: 2; }
+  .hero h1 {
+    font-size: clamp(3rem, 7vw, 5rem);
+    color: #fff;
+    margin: 0 0 4px;
+    letter-spacing: 6px;
+  }
+  .hero h1 b { color: var(--sky); }
+  .hero-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--sky);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.6);
+    font-size: 1.1rem;
+    font-weight: 300;
+    max-width: 540px;
+    margin: 0 auto 40px;
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gradient-accent);
+    color: #fff;
+    padding: 16px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: transform 0.25s, box-shadow 0.25s;
+    box-shadow: 0 4px 24px var(--green-glow);
+    position: relative;
+    z-index: 2;
+  }
+  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px var(--green-glow); }
+  .hero-cta svg { width: 18px; height: 18px; fill: currentColor; }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 24px; height: 40px;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+  }
+  .hero-scroll-dot {
+    width: 4px; height: 8px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 2px;
+    margin-top: 6px;
+    animation: scroll-hint 2s ease-in-out infinite;
+  }
+  @keyframes scroll-hint {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(12px); opacity: 0.2; }
+  }
+
+  /* ---- SECTIONS ---- */
+  section { padding: 100px 24px; }
+  .section-inner { max-width: 1120px; margin: 0 auto; }
+  section.dark { background: var(--navy); }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 16px;
+  }
+  .section-eyebrow::before {
+    content: '';
+    width: 32px; height: 2px;
+    background: var(--gradient-accent);
+    border-radius: 1px;
+  }
+  .section-title {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    margin: 0 0 20px;
+    letter-spacing: 2px;
+  }
+  .section-desc {
+    max-width: 620px;
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    margin-bottom: 56px;
+    line-height: 1.8;
+  }
+
+  /* ---- MISSION ---- */
+  .mission-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  @media (max-width: 768px) {
+    .mission-layout { grid-template-columns: 1fr; gap: 40px; }
+  }
+  .mission-left .section-desc { margin-bottom: 0; }
+  .mission-quote-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 36px;
+    position: relative;
+    box-shadow: var(--shadow-md);
+  }
+  .mission-quote-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 32px; right: 32px;
+    height: 3px;
+    background: var(--gradient-accent);
+    border-radius: 0 0 2px 2px;
+  }
+  .mission-quote-mark {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    line-height: 1;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: -20px;
+  }
+  .mission-quote-text {
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.8;
+    font-style: italic;
+  }
+  .mission-quote-text strong { font-weight: 700; font-style: normal; }
+  .mission-quote-attr {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ---- VALUES ---- */
+  .values-section { background: var(--bg-alt); }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  @media (max-width: 768px) { .values-grid { grid-template-columns: 1fr; } }
+  .val-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 32px;
+    text-align: center;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s, border-color 0.35s;
+    position: relative;
+    overflow: hidden;
+  }
+  .val-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gradient-accent);
+    transform: scaleX(0);
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+  .val-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--border-hover); }
+  .val-card:hover::after { transform: scaleX(1); }
+  .val-icon {
+    width: 64px; height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+  .val-icon svg { width: 28px; height: 28px; }
+  .val-icon.i-adapt { background: rgba(59,159,217,0.1); }
+  .val-icon.i-adapt svg { stroke: var(--sky); fill: none; stroke-width: 2; }
+  .val-icon.i-learn { background: rgba(46,139,71,0.1); }
+  .val-icon.i-learn svg { stroke: var(--green); fill: none; stroke-width: 2; }
+  .val-icon.i-play { background: rgba(212,168,67,0.1); }
+  .val-icon.i-play svg { stroke: var(--gold); fill: none; stroke-width: 2; }
+  .val-card h3 {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    margin: 0 0 12px;
+  }
+  .val-card p { font-size: 0.95rem; color: var(--text-secondary); margin: 0; font-weight: 300; line-height: 1.7; }
+
+  /* ---- PROGRAMS ---- */
+  .programs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  @media (max-width: 900px) { .programs-grid { grid-template-columns: 1fr; } }
+  .prog-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s;
+    display: flex;
+    flex-direction: column;
+  }
+  .prog-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .prog-top {
+    padding: 32px 28px 0;
+  }
+  .prog-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+  }
+  .prog-badge.b-adapt { background: rgba(59,159,217,0.1); color: var(--sky); }
+  .prog-badge.b-school { background: rgba(46,139,71,0.1); color: var(--green); }
+  .prog-badge.b-event { background: rgba(212,168,67,0.1); color: var(--gold); }
+  .prog-card h3 { font-size: 1.5rem; letter-spacing: 1px; margin: 0 0 8px; }
+  .prog-body { padding: 8px 28px 32px; flex: 1; }
+  .prog-body p { font-size: 0.92rem; color: var(--text-secondary); margin: 0 0 20px; font-weight: 300; }
+  .prog-list { margin: 0; padding: 0; list-style: none; }
+  .prog-list li {
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    padding: 7px 0 7px 24px;
+    position: relative;
+    font-weight: 400;
+  }
+  .prog-list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 14px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--sky);
+  }
+  .prog-card:nth-child(2) .prog-list li::before { background: var(--green); }
+  .prog-card:nth-child(3) .prog-list li::before { background: var(--gold); }
+
+  /* ---- ABOUT ---- */
+  .about-section { background: var(--bg-alt); }
+  .about-grid {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; text-align: center; gap: 32px; }
+    .about-photo { margin: 0 auto; }
+  }
+  .about-photo {
+    position: relative;
+    width: 260px;
+  }
+  .about-photo-bg {
+    width: 260px; height: 260px;
+    border-radius: 20px;
+    background: var(--gradient-hero);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-photo-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(59,159,217,0.15), transparent);
+  }
+  .about-photo-bg svg { width: 100px; height: 100px; fill: rgba(255,255,255,0.7); position: relative; z-index: 1; }
+  .about-photo-badge {
+    position: absolute;
+    bottom: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 8px 20px;
+    box-shadow: var(--shadow-md);
+    white-space: nowrap;
+  }
+  .about-photo-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+  }
+  .about-photo-role {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--sky);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .about-content { padding-top: 8px; }
+  .about-content h2 { font-size: 2.4rem; letter-spacing: 2px; margin: 0 0 20px; }
+  .about-content p { color: var(--text-secondary); font-weight: 300; font-size: 1rem; margin: 0 0 16px; line-height: 1.8; }
+
+  /* ---- IMPACT ---- */
+  .impact-strip {
+    background: var(--gradient-hero);
+    padding: 64px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .impact-strip .hero-bg-glow { opacity: 0.06; }
+  .impact-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+  .impact-stat { text-align: center; }
+  .impact-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.4rem;
+    letter-spacing: 3px;
+    line-height: 1;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+  .impact-lbl {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+  }
+
+  /* ---- CONTACT ---- */
+  .contact-section { background: var(--bg-alt); }
+  .contact-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 48px 40px;
+    box-shadow: var(--shadow-md);
+    margin-top: 48px;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 36px;
+  }
+  @media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; gap: 24px; } }
+  .contact-item { text-align: center; }
+  .contact-icon-wrap {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    background: rgba(59,159,217,0.08);
+    transition: background 0.25s, transform 0.25s;
+  }
+  .contact-item:hover .contact-icon-wrap { background: rgba(59,159,217,0.15); transform: translateY(-2px); }
+  .contact-icon-wrap svg { width: 22px; height: 22px; fill: var(--sky); }
+  .contact-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .contact-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+  }
+  .contact-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gradient-accent);
+    color: #fff;
+    padding: 14px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: transform 0.25s, box-shadow 0.25s;
+    box-shadow: 0 4px 24px var(--green-glow);
+  }
+  .contact-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px var(--green-glow); }
+  .contact-cta svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* ---- FOOTER ---- */
+  footer {
+    background: var(--navy);
+    text-align: center;
+    padding: 28px 24px;
+  }
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .footer-brand b { color: rgba(59,159,217,0.5); }
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.25);
+  }
+  .footer-copy a { color: rgba(59,159,217,0.5); text-decoration: none; }
+
+  /* ---- ANIMATIONS ---- */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .reveal.vis { opacity: 1; transform: translateY(0); }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .reveal-left.vis { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .reveal-right.vis { opacity: 1; transform: translateX(0); }
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .hero-logo-wrap { animation: float-in 1s ease-out; }
+    .hero-text { animation: fade-up-in 1s ease-out 0.3s both; }
+    @keyframes float-in {
+      from { opacity: 0; transform: translateY(30px) scale(0.9); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes fade-up-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-logo {
+      animation: gentle-float 6s ease-in-out infinite;
+    }
+    @keyframes gentle-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">ADAPT<b>2</b>GOLF</a>
+    <ul class="nav-links">
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-bg-glow g1"></div>
+  <div class="hero-bg-glow g2"></div>
+  <div class="hero-bg-glow g3"></div>
+
+  <div class="hero-logo-wrap">
+    <div class="hero-logo-ring"></div>
+    <div class="hero-logo-ring r2"></div>
+    <img class="hero-logo" src="images/logo.webp" alt="Adapt2Golf Inclusive Golf Academy logo">
+  </div>
+
+  <div class="hero-text">
+    <h1>ADAPT<b>2</b>GOLF</h1>
+    <div class="hero-tagline">Adapt &middot; Learn &middot; Play</div>
+    <p class="hero-sub">Making golf accessible to anyone who wants to play — regardless of disability, ability, experience, or resources.</p>
+    <a href="#contact" class="hero-cta">
+      Let's Give It a Shot
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+  <div class="hero-scroll"><div class="hero-scroll-dot"></div></div>
+</header>
+
+<section id="mission">
+  <div class="section-inner">
+    <div class="mission-layout">
+      <div class="mission-left reveal-left">
+        <div class="section-eyebrow">Our Mission</div>
+        <h2 class="section-title">Everyone Deserves<br>a Swing</h2>
+        <p class="section-desc">Golf isn't only for the privileged few. It's for the kid in the wheelchair who's never held a club. It's for the veteran with a prosthetic leg who thinks sport is behind them. It's for the student who's never set foot on a course. We meet golfers where they are, adapt the game to what they have, and give them the chance to discover what they can do.</p>
+      </div>
+      <div class="mission-right reveal-right">
+        <div class="mission-quote-card">
+          <div class="mission-quote-mark">"</div>
+          <p class="mission-quote-text">If you tell us, 'I want to try to hit a golf ball,' our answer is simple: <strong>Let's give it a shot.</strong></p>
+          <div class="mission-quote-attr">— Adapt2Golf</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="values-section">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom: 56px;" class="reveal">
+      <div class="section-eyebrow" style="justify-content:center;">What We Believe</div>
+      <h2 class="section-title">Adapt. Learn. Play.</h2>
+    </div>
+    <div class="values-grid">
+      <div class="val-card reveal stagger-1">
+        <div class="val-icon i-adapt">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12l3 3 5-5"/></svg>
+        </div>
+        <h3>ADAPT</h3>
+        <p>Every golfer is different. We adapt equipment, technique, and instruction to fit the individual — one arm, one leg, a wheelchair, or anything in between.</p>
+      </div>
+      <div class="val-card reveal stagger-2">
+        <div class="val-icon i-learn">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        </div>
+        <h3>LEARN</h3>
+        <p>We figure out how each person learns — visual, auditory, or kinesthetic — within the first five minutes. Simple, rewarding, and built around you.</p>
+      </div>
+      <div class="val-card reveal stagger-3">
+        <div class="val-icon i-play">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <h3>PLAY</h3>
+        <p>It's not about how far you hit it. It's about the fact that you did. Every swing is a victory. Every golfer who steps up is already winning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="programs">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom: 56px;" class="reveal">
+      <div class="section-eyebrow" style="justify-content:center;">What We Offer</div>
+      <h2 class="section-title">Programs & Services</h2>
+      <p class="section-desc" style="margin-inline:auto;">From one-on-one adaptive lessons to full school clinics and competitive events — we bring golf to the people who need it most.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="prog-card reveal stagger-1">
+        <div class="prog-top">
+          <span class="prog-badge b-adapt">Adaptive</span>
+          <h3>ADAPTIVE GOLF</h3>
+        </div>
+        <div class="prog-body">
+          <p>Personalized coaching for golfers with physical disabilities, amputees, wheelchair users, and anyone who needs adapted technique or equipment.</p>
+          <ul class="prog-list">
+            <li>Fully individualized instruction</li>
+            <li>Adaptive equipment available</li>
+            <li>Standing golf carts for wheelchair users</li>
+            <li>All skill levels welcome</li>
+          </ul>
+        </div>
+      </div>
+      <div class="prog-card reveal stagger-2">
+        <div class="prog-top">
+          <span class="prog-badge b-school">Schools</span>
+          <h3>SCHOOL CLINICS</h3>
+        </div>
+        <div class="prog-body">
+          <p>On-site clinics for elementary and middle schools — brought to your gym or fields. Fully inclusive so every student can participate and succeed.</p>
+          <ul class="prog-list">
+            <li>Custom on-site clinic formats</li>
+            <li>Small groups (1–5) or large (6–10+)</li>
+            <li>PE & after-school integration</li>
+            <li>Curriculum development available</li>
+          </ul>
+        </div>
+      </div>
+      <div class="prog-card reveal stagger-3">
+        <div class="prog-top">
+          <span class="prog-badge b-event">Events</span>
+          <h3>TOURNAMENTS</h3>
+        </div>
+        <div class="prog-body">
+          <p>Events and tournaments that bring adaptive golfers together in a competitive, supportive environment. Custom events for schools and organizations.</p>
+          <ul class="prog-list">
+            <li>Inclusive tournament formats</li>
+            <li>School championship events</li>
+            <li>Community fundraisers</li>
+            <li>Corporate outings with purpose</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="impact-strip">
+  <div class="hero-bg-glow g1"></div>
+  <div class="impact-inner reveal">
+    <div class="impact-stat">
+      <div class="impact-num">100%</div>
+      <div class="impact-lbl">Inclusive</div>
+    </div>
+    <div class="impact-stat">
+      <div class="impact-num">ALL</div>
+      <div class="impact-lbl">Abilities Welcome</div>
+    </div>
+    <div class="impact-stat">
+      <div class="impact-num">1</div>
+      <div class="impact-lbl">Swing at a Time</div>
+    </div>
+  </div>
+</div>
+
+<section class="about-section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-photo reveal-left">
+        <div class="about-photo-bg">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </div>
+        <div class="about-photo-badge">
+          <div class="about-photo-name">MIKE SAMSON</div>
+          <div class="about-photo-role">Golf Pro & Adaptive Specialist</div>
+        </div>
+      </div>
+      <div class="about-content reveal-right">
+        <div class="section-eyebrow">Your Instructor</div>
+        <h2>MEET MIKE</h2>
+        <p>Mike Samson is a North Shore golf professional who specializes in adaptive instruction and youth development. He teaches students based on how they individually process information — auditory, visual, or kinesthetic — figuring out each person's learning style within the first five minutes.</p>
+        <p>With experience across all age groups and abilities, Mike believes that elementary and middle school students are at the perfect age to learn golf. They haven't built bad habits yet and are incredibly moldable. His approach keeps things simple, rewarding, and deeply fun.</p>
+        <p>Mike personally runs small groups of 1–5 students and brings in additional instructors for larger groups, ensuring every participant gets the attention they deserve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="contact-inner reveal">
+      <div class="section-eyebrow" style="justify-content:center;">Get Started</div>
+      <h2 class="section-title">Ready to Give It a Shot?</h2>
+      <p class="section-desc" style="margin-inline:auto;">Whether you're a school looking to bring golf to your students, an organization serving disabled athletes, or an individual who just wants to try — reach out.</p>
+      <div class="contact-card">
+        <div class="contact-grid">
+          <div class="contact-item">
+            <div class="contact-icon-wrap">
+              <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            </div>
+            <div class="contact-label">Call or Text</div>
+            <div class="contact-val">(847) 708-7833</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon-wrap">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </div>
+            <div class="contact-label">Email</div>
+            <div class="contact-val">MIKESAMSON65@YAHOO.COM</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon-wrap">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div class="contact-label">Location</div>
+            <div class="contact-val">CHICAGO NORTH SHORE</div>
+          </div>
+        </div>
+        <a href="#contact" class="contact-cta">
+          Get in Touch
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">ADAPT<b>2</b>GOLF</div>
+  <div class="footer-copy">&copy; 2026 Adapt2Golf Inclusive Golf Academy &middot; <a href="https://adapt2golf.org">adapt2golf.org</a></div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => obs.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+</body>
+</html>
