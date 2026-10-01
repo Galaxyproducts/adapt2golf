@@ -7,7 +7,7 @@
 <meta name="description" content="Adapt2Golf brings adaptive golf instruction to people with disabilities and inclusive golf clinics to schools across Chicago's North Shore. Adapt. Learn. Play.">
 <meta property="og:title" content="Adapt2Golf | Inclusive Golf Academy">
 <meta property="og:description" content="Adaptive golf instruction and inclusive school clinics on Chicago's North Shore. Everyone deserves a swing.">
-<meta property="og:image" content="https://adapt2golf.org/images/hero.jpg">
+<meta property="og:image" content="https://adapt2golf.org/images/cover-poster.jpg">
 <meta property="og:url" content="https://adapt2golf.org">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0E1A2B">
@@ -210,46 +210,67 @@
     .brand-text small { display: none; }
   }
 
-  /* ---- Hero ---- */
-  .hero {
+  /* ---- Cover video ---- */
+  .cover {
     position: relative;
-    min-height: 580px;
-    max-height: 760px;
-    height: 76vh;
+    background: var(--bg);
+  }
+  .cover-video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    /* Never taller than the screen below the top bar and nav, so the whole frame stays visible. */
+    max-height: calc(100vh - 115px);
+    max-height: calc(100svh - 115px);
+    object-fit: contain;
+    background: var(--bg);
+  }
+  .cover-toggle {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    width: 38px;
+    height: 38px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    padding: 0;
     color: #fff;
-    overflow: hidden;
-    background: var(--bg-deep);
+    background: rgba(10,19,32,0.7);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.18s;
   }
-  .hero-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 60%;
+  .cover-toggle:hover { background: rgba(10,19,32,0.92); }
+  .cover-toggle:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
+  .cover-toggle svg { width: 18px; height: 18px; fill: currentColor; }
+  .cover-toggle .icon-play { display: none; }
+  .cover-toggle.is-paused .icon-play { display: block; }
+  .cover-toggle.is-paused .icon-pause { display: none; }
+  @media (max-width: 700px) {
+    .cover-toggle { width: 30px; height: 30px; right: 8px; bottom: 8px; }
+    .cover-toggle svg { width: 14px; height: 14px; }
   }
-  .hero-shade {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(90deg, rgba(10,19,32,0.84) 0%, rgba(10,19,32,0.55) 45%, rgba(10,19,32,0.12) 100%),
-      linear-gradient(0deg, var(--bg) 0%, rgba(14,26,43,0) 32%);
+
+  /* ---- Intro band ---- */
+  .intro { padding-block: 52px 60px; border-bottom: 1px solid var(--line); }
+  .intro-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 44px;
+    align-items: center;
   }
-  .hero-content { position: relative; max-width: 640px; padding-block: 60px; }
-  .hero-kicker {
-    font-family: var(--font-head);
-    font-weight: 800;
-    font-size: 0.85rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--sky);
-    margin-bottom: 16px;
+  .intro h1 { font-size: clamp(2rem, 4.2vw, 3.3rem); margin-bottom: 14px; }
+  .intro .lead { max-width: 700px; margin: 0; color: var(--ink); }
+  .intro-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  @media (max-width: 900px) {
+    .intro { padding-block: 36px 44px; }
+    .intro-inner { grid-template-columns: 1fr; gap: 26px; }
   }
-  .hero h1 { color: #fff; margin-bottom: 18px; }
-  .hero-lead { font-size: 1.22rem; line-height: 1.55; color: rgba(255,255,255,0.92); max-width: 560px; margin-bottom: 30px; }
-  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  @media (max-width: 460px) {
+    .intro-actions .btn { flex: 1; padding-inline: 12px; }
+  }
 
   /* ---- Who ---- */
   .split {
@@ -503,11 +524,6 @@
   @media (prefers-reduced-motion: no-preference) {
     .js .rv { transition: opacity 0.6s ease, transform 0.6s ease; }
     .js .rv.pending { opacity: 0; transform: translateY(18px); }
-    .js .hero-content > * { animation: rise 0.7s ease both; }
-    .js .hero-content > :nth-child(2) { animation-delay: 0.1s; }
-    .js .hero-content > :nth-child(3) { animation-delay: 0.2s; }
-    .js .hero-content > :nth-child(4) { animation-delay: 0.3s; }
-    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
   }
 </style>
 </head>
@@ -540,14 +556,27 @@
   </div>
 </header>
 
-<section class="hero" id="top">
-  <img class="hero-img" src="images/hero.jpg" alt="">
-  <div class="hero-shade"></div>
-  <div class="wrap hero-content">
-    <p class="hero-kicker">Adaptive golf &middot; School clinics &middot; Inclusive events</p>
-    <h1>Everyone deserves a swing.</h1>
-    <p class="hero-lead">Adapt2Golf brings adaptive golf instruction to people with disabilities and inclusive clinics to schools across Chicago's North Shore. One arm, one leg, a wheelchair, no experience at all: we adapt the game to you.</p>
-    <div class="hero-actions">
+<section class="cover" id="top">
+  <video class="cover-video" id="cover-video" autoplay muted loop playsinline preload="metadata"
+         poster="images/cover-poster.jpg"
+         aria-label="Adapt2Golf promo video: a putter strikes a ball, then golfers of all ages practice and are coached under the words Adapt, Learn, Play.">
+    <source src="video/promo-1080.mp4" type="video/mp4" media="(min-width: 1400px)">
+    <source src="video/promo-720.mp4" type="video/mp4">
+  </video>
+  <button class="cover-toggle" id="cover-toggle" type="button" aria-label="Pause video">
+    <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+    <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+  </button>
+</section>
+
+<section class="intro">
+  <div class="wrap intro-inner">
+    <div>
+      <p class="kicker">Adaptive golf &middot; School clinics &middot; Inclusive events</p>
+      <h1>Everyone deserves a swing.</h1>
+      <p class="lead">Adapt2Golf brings adaptive golf instruction to people with disabilities and inclusive clinics to schools across Chicago's North Shore. One arm, one leg, a wheelchair, no experience at all: we adapt the game to you.</p>
+    </div>
+    <div class="intro-actions">
       <a class="btn btn-green btn-lg" href="#contact">Book a lesson</a>
       <a class="btn btn-outline btn-lg" href="#programs">See programs</a>
     </div>
@@ -746,6 +775,27 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 8);
   }, { passive: true });
+
+  // Cover video: let people pause it, and stop decoding once it is off screen.
+  const video = document.getElementById('cover-video');
+  const coverToggle = document.getElementById('cover-toggle');
+  let userPaused = false;
+  const play = () => video.play().catch(() => {});
+  const syncToggle = () => {
+    coverToggle.classList.toggle('is-paused', video.paused);
+    coverToggle.setAttribute('aria-label', video.paused ? 'Play video' : 'Pause video');
+  };
+  coverToggle.addEventListener('click', () => {
+    userPaused = !video.paused;
+    if (video.paused) { play(); } else { video.pause(); }
+  });
+  video.addEventListener('play', syncToggle);
+  video.addEventListener('pause', syncToggle);
+  syncToggle();
+  new IntersectionObserver(([entry]) => {
+    if (!entry.isIntersecting) { video.pause(); }
+    else if (!userPaused) { play(); }
+  }, { threshold: 0.15 }).observe(video);
 
   // Only sections below the first screen animate in; everything else is visible at rest.
   const below = [...document.querySelectorAll('.rv')]
