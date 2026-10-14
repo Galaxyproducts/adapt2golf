@@ -11,645 +11,12 @@
 <meta property="og:url" content="https://adapt2golf.org">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#0E1A2B">
-<link rel="icon" type="image/webp" href="images/logo.webp">
+<link rel="icon" type="image/webp" href="/images/logo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
 <script>document.documentElement.className += ' js';</script>
-<style>
-  :root {
-    color-scheme: dark;
-    --bg: #0C1726;
-    --bg-alt: #111F33;
-    --bg-deep: #08111D;
-    --card: #152840;
-    --card-raised: #1A3050;
-    --line: rgba(255,255,255,0.10);
-    --heading: #FFFFFF;
-    --ink: #D6DEE8;
-    --ink-soft: #9FACBD;
-    --green: #2E8B45;
-    --green-dark: #37A052;
-    --green-bright: #5FC774;
-    --sand: #E9C46A;
-    --sand-soft: #F2DA9A;
-    --sky: #E9C46A;
-    --font-head: 'Barlow Condensed', 'Arial Narrow', 'Arial', sans-serif;
-    --font-body: 'Barlow', 'Segoe UI', 'Helvetica Neue', sans-serif;
-    --wrap: 1140px;
-  }
-
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--font-body);
-    font-size: 1.05rem;
-    line-height: 1.65;
-  }
-  img { max-width: 100%; display: block; }
-  a { color: var(--sky); }
-  h1, h2, h3, h4 {
-    font-family: var(--font-head);
-    color: var(--heading);
-    line-height: 1.15;
-    margin: 0 0 0.6em;
-    text-wrap: balance;
-  }
-  h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 800; letter-spacing: -0.01em; text-transform: uppercase; line-height: 0.98; }
-  h2 { font-size: clamp(2rem, 3.6vw, 2.9rem); font-weight: 700; letter-spacing: 0; line-height: 1.05; }
-  h3 { font-size: 1.45rem; font-weight: 700; letter-spacing: 0.01em; }
-  h4 { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; }
-  p { margin: 0 0 1em; }
-
-  .wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: 24px; }
-  .section { padding-block: 88px; }
-  .section.alt { background: var(--bg-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  @media (max-width: 700px) { .section { padding-block: 60px; } }
-
-  .kicker {
-    font-family: var(--font-head);
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--sky);
-    margin-bottom: 12px;
-  }
-  .lead { font-size: 1.18rem; color: var(--ink-soft); max-width: 640px; }
-  .section-head { max-width: 720px; margin-bottom: 44px; }
-
-  /* ---- Buttons ---- */
-  .btn {
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 1rem;
-    padding: 12px 22px;
-    border-radius: 4px;
-    text-decoration: none;
-    border: 2px solid transparent;
-    transition: background 0.18s, border-color 0.18s, color 0.18s;
-    white-space: nowrap;
-  }
-  .btn-lg { padding: 15px 30px; font-size: 1.12rem; }
-  .btn-green { background: var(--green); color: #fff; }
-  .btn-green:hover { background: var(--green-dark); }
-  .btn-light { background: #fff; color: var(--bg); }
-  .btn-light:hover { background: #E3EAF2; }
-  .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,0.75); }
-  .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
-  .btn:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
-
-  /* ---- Top bar ---- */
-  .topbar {
-    background: var(--bg-deep);
-    color: rgba(255,255,255,0.75);
-    font-size: 0.88rem;
-  }
-  .topbar .wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    min-height: 36px;
-    flex-wrap: wrap;
-  }
-  .topbar a { color: #fff; text-decoration: none; font-weight: 600; }
-  .topbar a:hover { text-decoration: underline; }
-  .topbar-contact { display: flex; gap: 22px; }
-  @media (max-width: 700px) { .topbar-tag { display: none; } .topbar .wrap { justify-content: center; } }
-
-  /* ---- Nav ---- */
-  .nav {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: var(--bg);
-    border-bottom: 1px solid var(--line);
-    transition: box-shadow 0.2s;
-  }
-  .nav.scrolled { box-shadow: 0 6px 20px rgba(0,0,0,0.35); }
-  .nav-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 78px;
-    gap: 24px;
-  }
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    color: var(--heading);
-  }
-  .brand img { width: 54px; height: 54px; }
-  .brand-text {
-    font-family: var(--font-head);
-    font-weight: 800;
-    font-size: 1.7rem;
-    text-transform: uppercase;
-    line-height: 1;
-    letter-spacing: -0.01em;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  .brand-text b { color: var(--sand); font-weight: 800; }
-  .brand-text small {
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-  }
-  .menu { display: flex; align-items: center; gap: 28px; }
-  .menu a:not(.btn) {
-    font-family: var(--font-head);
-    font-weight: 600;
-    font-size: 1.1rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--heading);
-    text-decoration: none;
-    padding: 6px 0;
-    border-bottom: 2px solid transparent;
-    transition: border-color 0.18s;
-  }
-  .menu a:not(.btn):hover { border-bottom-color: var(--sand); }
-  .nav-toggle {
-    display: none;
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--heading);
-    background: none;
-    border: 2px solid rgba(255,255,255,0.25);
-    border-radius: 6px;
-    padding: 8px 14px;
-    cursor: pointer;
-  }
-  @media (max-width: 900px) {
-    .nav-toggle { display: inline-block; }
-    .menu {
-      display: none;
-      position: absolute;
-      left: 0; right: 0; top: 100%;
-      background: var(--bg);
-      border-bottom: 1px solid var(--line);
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0;
-      padding: 8px 24px 20px;
-      box-shadow: 0 16px 28px rgba(0,0,0,0.4);
-    }
-    .menu.open { display: flex; }
-    .menu a:not(.btn) { padding: 14px 0; border-bottom: 1px solid var(--line); }
-    .menu .btn { margin-top: 14px; }
-    .brand-text small { display: none; }
-  }
-
-  /* ---- Hero: photo cover, text left, video player right ---- */
-  .hero {
-    position: relative;
-    overflow: hidden;
-    background: var(--bg-deep);
-    padding-block: 80px 92px;
-  }
-  .hero-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 60%;
-  }
-  .hero-shade {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(90deg, rgba(8,17,29,0.94) 0%, rgba(8,17,29,0.78) 42%, rgba(8,17,29,0.35) 100%),
-      linear-gradient(0deg, var(--bg) 0%, rgba(12,23,38,0) 30%);
-  }
-  .hero-inner {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1.15fr;
-    gap: 52px;
-    align-items: center;
-  }
-  .hero h1 { font-size: clamp(2.8rem, 5.2vw, 4.4rem); margin-bottom: 18px; }
-  .hero .lead { color: rgba(255,255,255,0.9); max-width: 540px; margin-bottom: 30px; }
-  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-  .hero-video {
-    position: relative;
-    aspect-ratio: 16 / 9;
-    border-radius: 8px;
-    overflow: hidden;
-    background: var(--bg-deep);
-    border: 1px solid rgba(255,255,255,0.16);
-    box-shadow: 0 30px 70px rgba(0,0,0,0.5);
-  }
-  .hero-video video { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .hero-facts {
-    position: relative;
-    margin-top: 64px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-  }
-  .hero-facts div {
-    padding: 18px 20px 0 0;
-    border-top: 1px solid rgba(255,255,255,0.14);
-    font-size: 0.94rem;
-    line-height: 1.45;
-    color: var(--ink-soft);
-  }
-  .hero-facts div + div { border-left: 1px solid rgba(255,255,255,0.14); padding-left: 20px; }
-  .hero-facts strong {
-    display: block;
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 1.2rem;
-    letter-spacing: 0.02em;
-    color: #fff;
-    margin-bottom: 3px;
-  }
-  @media (max-width: 960px) {
-    .hero-facts { grid-template-columns: 1fr 1fr; gap: 16px 0; margin-top: 44px; }
-    .hero-facts div:nth-child(3) { border-left: 0; padding-left: 0; }
-  }
-  @media (max-width: 520px) {
-    .hero-facts { grid-template-columns: 1fr; gap: 12px; }
-    .hero-facts div + div { border-left: 0; padding-left: 0; }
-  }
-  .cover-toggle {
-    position: absolute;
-    right: 14px;
-    bottom: 14px;
-    width: 38px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    color: #fff;
-    background: rgba(10,19,32,0.7);
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background 0.18s;
-  }
-  .cover-toggle:hover { background: rgba(10,19,32,0.92); }
-  .cover-toggle:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; }
-  .cover-toggle svg { width: 18px; height: 18px; fill: currentColor; }
-  .cover-toggle .icon-play { display: none; }
-  .cover-toggle.is-paused .icon-play { display: block; }
-  .cover-toggle.is-paused .icon-pause { display: none; }
-  @media (max-width: 700px) {
-    .cover-toggle { width: 30px; height: 30px; right: 8px; bottom: 8px; }
-    .cover-toggle svg { width: 14px; height: 14px; }
-  }
-
-  /* Text stays on the page grid; on wide screens the player reaches a little past it. */
-  @media (min-width: 1360px) {
-    .hero-video { margin-right: -70px; }
-  }
-  @media (max-width: 960px) {
-    .hero { padding-block: 44px 56px; }
-    .hero-inner { grid-template-columns: 1fr; gap: 34px; }
-  }
-  @media (max-width: 460px) {
-    .hero-actions .btn { flex: 1; padding-inline: 12px; }
-  }
-
-  /* ---- Who ---- */
-  .split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 56px;
-    align-items: start;
-  }
-  .who-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px 28px;
-    font-size: 1.08rem;
-    font-weight: 600;
-    color: var(--heading);
-    padding-top: 8px;
-  }
-  .who-list li {
-    position: relative;
-    padding-left: 30px;
-  }
-  .who-list li::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 4px;
-    width: 18px; height: 18px;
-    border-radius: 50%;
-    background: rgba(92,194,113,0.18) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235CC271' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/11px no-repeat;
-  }
-  @media (max-width: 820px) {
-    .split { grid-template-columns: 1fr; gap: 28px; }
-    .who-list { grid-template-columns: 1fr; }
-  }
-
-  /* ---- Media split ---- */
-  .split-media {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
-  }
-  .split-media.reverse > :first-child { order: 2; }
-  .media { margin: 0; position: relative; }
-  .media img {
-    width: 100%;
-    aspect-ratio: 4 / 3.3;
-    object-fit: cover;
-    border-radius: 6px;
-  }
-  .media::after, .card-img::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(12,23,38,0.08);
-    pointer-events: none;
-  }
-  .media::after { border-radius: 6px; }
-  .pull {
-    margin: 28px 0 0;
-    padding: 4px 0 4px 22px;
-    border-left: 3px solid var(--sand);
-    font-family: var(--font-head);
-    font-weight: 600;
-    font-size: 1.45rem;
-    line-height: 1.5;
-    letter-spacing: -0.01em;
-    color: var(--heading);
-  }
-  .pull strong { color: var(--sand); font-weight: 700; }
-  @media (max-width: 820px) {
-    .split-media { grid-template-columns: 1fr; gap: 32px; }
-    .split-media.reverse > :first-child { order: 0; }
-  }
-
-  /* ---- Program cards ---- */
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-  }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  .card-img { position: relative; overflow: hidden; aspect-ratio: 4 / 3; }
-  .card-img img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-  }
-  .card-body { padding: 24px 24px 26px; display: flex; flex-direction: column; flex: 1; }
-  .card-body h3 { margin-bottom: 8px; }
-  .card-body p { color: var(--ink-soft); margin-bottom: 18px; flex: 1; }
-  .card-body a {
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 1.1rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--sand);
-  }
-  .card-body a:hover { text-decoration: underline; }
-  @media (max-width: 900px) { .cards { grid-template-columns: 1fr; max-width: 520px; } }
-
-  /* ---- Steps ---- */
-  .steps {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 36px;
-  }
-  .steps li { position: relative; }
-  .step-num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 46px; height: 46px;
-    border-radius: 50%;
-    border: 2px solid var(--sand);
-    color: var(--sand);
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 1.25rem;
-    margin-bottom: 18px;
-  }
-  .steps h3 { margin-bottom: 8px; }
-  .steps p { color: var(--ink-soft); margin: 0; }
-  @media (max-width: 820px) { .steps { grid-template-columns: 1fr; gap: 28px; } }
-
-  /* ---- Mike ---- */
-  .profile {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 32px 32px 28px;
-  }
-  .profile-name {
-    font-family: var(--font-head);
-    font-weight: 800;
-    font-size: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.01em;
-    color: var(--heading);
-    margin: 0 0 4px;
-  }
-  .profile-role { color: var(--ink-soft); font-weight: 600; margin: 0 0 22px; }
-  .profile-facts {
-    margin: 0;
-    display: grid;
-    gap: 16px;
-    border-top: 1px solid var(--line);
-    padding-top: 20px;
-  }
-  .profile-facts dt {
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--sand);
-    margin-bottom: 3px;
-  }
-  .profile-facts dd { margin: 0; color: var(--ink); }
-  .profile-facts a { color: var(--heading); text-decoration: none; }
-  .profile-facts a:hover { text-decoration: underline; }
-  .creds {
-    list-style: none;
-    margin: 18px 0 0;
-    padding: 0;
-    display: grid;
-    gap: 10px;
-    font-weight: 600;
-    color: var(--heading);
-  }
-  .creds li { padding-left: 26px; position: relative; }
-  .creds li::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 9px;
-    width: 12px; height: 12px;
-    border-radius: 2px;
-    background: var(--sand);
-  }
-
-  /* ---- Statement band ---- */
-  .band {
-    position: relative;
-    min-height: 380px;
-    display: flex;
-    align-items: center;
-    color: #fff;
-    overflow: hidden;
-    background: var(--bg-deep);
-  }
-  .band > img {
-    position: absolute;
-    inset: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center 55%;
-  }
-  .band::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(8,17,29,0.82) 0%, rgba(8,17,29,0.55) 60%, rgba(8,17,29,0.3) 100%);
-  }
-  .band-content { position: relative; z-index: 1; padding-block: 72px; max-width: 820px; }
-  .band-quote {
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: clamp(1.9rem, 3.8vw, 3rem);
-    line-height: 1.15;
-    letter-spacing: 0;
-    margin-bottom: 16px;
-    text-wrap: balance;
-  }
-  .band-attr {
-    font-family: var(--font-head);
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    color: var(--sky);
-    margin: 0;
-  }
-
-  /* ---- Contact ---- */
-  .contact-actions { display: flex; gap: 14px; flex-wrap: wrap; margin: 26px 0 18px; }
-  .contact-note { color: var(--ink-soft); font-size: 0.98rem; }
-  /* ---- Booking form ---- */
-  .book-card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 30px;
-  }
-  .book-card h3 { margin-bottom: 4px; }
-  .book-card .form-note { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 20px; }
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .form-grid .full { grid-column: 1 / -1; }
-  .field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-  .field label {
-    font-family: var(--font-head);
-    font-weight: 600;
-    font-size: 0.95rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink);
-  }
-  .field input, .field select, .field textarea {
-    font: inherit;
-    font-size: 1rem;
-    color: var(--heading);
-    background: var(--bg-deep);
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 4px;
-    padding: 11px 12px;
-    width: 100%;
-    min-width: 0;
-  }
-  .field select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E9C46A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px; padding-right: 36px; }
-  .field textarea { min-height: 110px; resize: vertical; }
-  .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--sand); outline-offset: 1px; border-color: var(--sand); }
-  .field input::placeholder, .field textarea::placeholder { color: rgba(214,222,232,0.45); }
-  .form-foot { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
-  .form-foot .btn { width: 100%; }
-  .form-status { font-size: 0.95rem; color: var(--ink-soft); margin: 0; min-height: 1.4em; }
-  .form-status.ok { color: var(--green-bright); font-weight: 600; }
-  .form-status.err { color: #F0A58A; }
-  .book-done {
-    text-align: center;
-    padding: 28px 10px;
-  }
-  .book-done svg { width: 54px; height: 54px; margin-bottom: 12px; }
-  .book-done h3 { margin-bottom: 8px; }
-  .book-done p { color: var(--ink-soft); margin: 0; }
-  @media (max-width: 560px) { .form-grid { grid-template-columns: 1fr; } .book-card { padding: 22px 18px; } }
-
-  /* ---- Footer ---- */
-  .footer { background: var(--bg-deep); color: rgba(255,255,255,0.72); padding-block: 56px 28px; border-top: 1px solid var(--line); }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
-    gap: 40px;
-    padding-bottom: 36px;
-    border-bottom: 1px solid var(--line);
-  }
-  .brand-foot { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-  .brand-foot img { width: 48px; height: 48px; }
-  .brand-foot span {
-    font-family: var(--font-head);
-    font-weight: 800;
-    font-size: 1.6rem;
-    text-transform: uppercase;
-    color: #fff;
-  }
-  .brand-foot b { color: var(--sand); }
-  .footer h4 { color: #fff; margin-bottom: 14px; }
-  .footer-col { display: grid; gap: 8px; align-content: start; }
-  .footer-col a, .footer-col span { color: rgba(255,255,255,0.72); text-decoration: none; }
-  .footer-col a:hover { color: #fff; text-decoration: underline; }
-  .footer-bottom { padding-top: 22px; font-size: 0.88rem; color: rgba(255,255,255,0.45); }
-  @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
-
-  /* ---- Motion ---- */
-  @media (prefers-reduced-motion: no-preference) {
-    .js .rv { transition: opacity 0.6s ease, transform 0.6s ease; }
-    .js .rv.pending { opacity: 0; transform: translateY(18px); }
-  }
-</style>
+<link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
 
@@ -666,7 +33,7 @@
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
     <a class="brand" href="#top">
-      <img src="images/logo.webp" alt="" width="54" height="54">
+      <img src="/images/logo.webp" alt="" width="54" height="54">
       <span class="brand-text"><span class="brand-name">Adapt<b>2</b>Golf</span><small>Inclusive Golf Academy</small></span>
     </a>
     <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
@@ -675,13 +42,14 @@
       <a href="#programs">Programs</a>
       <a href="#how">How it works</a>
       <a href="#mike">Meet Mike</a>
+      <a href="#faq">FAQ</a>
       <a class="btn btn-green" href="#book">Book a lesson</a>
     </nav>
   </div>
 </header>
 
 <section class="hero" id="top">
-  <img class="hero-img" src="images/hero-sunrise.jpg" alt="">
+  <img class="hero-img" src="/images/hero-sunrise.jpg" alt="">
   <div class="hero-shade"></div>
   <div class="wrap hero-inner">
     <div>
@@ -697,8 +65,8 @@
       <video id="cover-video" autoplay muted loop playsinline preload="metadata"
              poster="images/video-poster.jpg"
              aria-label="Adapt2Golf promo video: a putter strikes a ball, then golfers of all ages practice and are coached under the words Adapt, Learn, Play.">
-        <source src="video/promo-1080.mp4" type="video/mp4" media="(min-width: 1000px) and (min-resolution: 1.5dppx)">
-        <source src="video/promo-720.mp4" type="video/mp4">
+        <source src="/video/promo-1080.mp4" type="video/mp4" media="(min-width: 1000px) and (min-resolution: 1.5dppx)">
+        <source src="/video/promo-720.mp4" type="video/mp4">
       </video>
       <button class="cover-toggle" id="cover-toggle" type="button" aria-label="Pause video">
         <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
@@ -711,6 +79,16 @@
     <div><strong>Any group size</strong>1 to 5 with Mike directly, 6 to 10+ with additional instructors</div>
     <div><strong>We come to you</strong>School clinics run in your gym or on your field</div>
     <div><strong>Chicago&rsquo;s North Shore</strong>Lessons at local courses and ranges</div>
+  </div>
+</section>
+
+<!-- Stats bar: replace the four numbers with real ones, then remove the "hidden" attribute. -->
+<section class="stats" hidden>
+  <div class="wrap">
+    <div class="stat"><strong>0</strong><span>students taught</span></div>
+    <div class="stat"><strong>0</strong><span>school clinics run</span></div>
+    <div class="stat"><strong>0</strong><span>years teaching golf</span></div>
+    <div class="stat"><strong>0</strong><span>North Shore courses and ranges</span></div>
   </div>
 </section>
 
@@ -735,7 +113,7 @@
 <section class="section alt" id="mission">
   <div class="wrap split-media rv">
     <figure class="media">
-      <img src="images/mission-group.jpg" alt="A group of golfers together on the green">
+      <img src="/images/mission-group.jpg" alt="A group of golfers together on the green">
     </figure>
     <div>
       <p class="kicker">Our mission</p>
@@ -756,27 +134,27 @@
     </div>
     <div class="cards rv">
       <article class="card">
-        <div class="card-img"><img src="images/prog-adaptive.jpg" alt="A golfer working on a chip shot on the course"></div>
+        <div class="card-img"><img src="/images/prog-adaptive.jpg" alt="A golfer working on a chip shot on the course"></div>
         <div class="card-body">
           <h3>Adaptive golf lessons</h3>
           <p>One-on-one and small-group instruction for golfers with physical disabilities. Adapted equipment, adapted technique, and standing golf carts that let wheelchair users swing from their feet.</p>
-          <a href="#book">Ask about lessons &rarr;</a>
+          <a href="/programs/adaptive-lessons.html">About adaptive lessons &rarr;</a>
         </div>
       </article>
       <article class="card">
-        <div class="card-img"><img src="images/prog-schools.jpg" alt="A young golfer hitting balls at the driving range"></div>
+        <div class="card-img"><img src="/images/prog-schools.jpg" alt="A young golfer hitting balls at the driving range"></div>
         <div class="card-body">
           <h3>School clinics</h3>
           <p>On-site clinics for elementary and middle schools, run in your gym or on your field. Small groups of 1 to 5 with Mike directly; extra instructors come in for groups of 6 or more. Works as PE, after-school, or a one-off intro day.</p>
-          <a href="#book">Bring a clinic to your school &rarr;</a>
+          <a href="/programs/school-clinics.html">About school clinics &rarr;</a>
         </div>
       </article>
       <article class="card">
-        <div class="card-img"><img src="images/prog-events.jpg" alt="A group of golfers walking the course with their bags"></div>
+        <div class="card-img"><img src="/images/prog-events.jpg" alt="A group of golfers walking the course with their bags"></div>
         <div class="card-body">
           <h3>Tournaments and events</h3>
           <p>Inclusive tournament formats, school championship days, community fundraisers, and corporate outings with a purpose. We build the program, run the instruction, and handle the day.</p>
-          <a href="#book">Plan an event &rarr;</a>
+          <a href="/programs/events.html">About events &rarr;</a>
         </div>
       </article>
     </div>
@@ -836,10 +214,103 @@
 </section>
 
 <section class="band">
-  <img src="images/statement-sunset.jpg" alt="">
+  <img src="/images/statement-sunset.jpg" alt="">
   <div class="wrap band-content rv">
     <p class="band-quote">&ldquo;It&rsquo;s not about how far you hit it. It&rsquo;s about the fact that you did.&rdquo;</p>
     <p class="band-attr">Adapt2Golf &middot; Adapt. Learn. Play.</p>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head rv">
+      <p class="kicker">Questions</p>
+      <h2>Things people ask before their first lesson.</h2>
+    </div>
+    <div class="faq rv">
+      <details>
+        <summary>Do I need my own clubs?</summary>
+        <div class="faq-body"><p>No. Bring them if you have them, but Mike has clubs for every age, height, and grip, including adapted clubs. For school clinics, all equipment comes with us.</p></div>
+      </details>
+      <details>
+        <summary>I use a wheelchair. Can I actually play?</summary>
+        <div class="faq-body"><p>Yes. Standing golf carts let wheelchair users swing from a standing position, and seated swings work too. Tell us about your mobility when you book and we'll have the right setup ready.</p></div>
+      </details>
+      <details>
+        <summary>I've never held a golf club. Is that a problem?</summary>
+        <div class="faq-body"><p>Most of our students start exactly there. The first lesson is about hitting a ball and enjoying it, not about technique. No experience, no fitness level, and no golf clothes required.</p></div>
+      </details>
+      <details>
+        <summary>Where do lessons happen?</summary>
+        <div class="faq-body"><p>At courses and driving ranges on Chicago's North Shore. School clinics run at your school, in the gym or on a field, so students don't need transportation.</p></div>
+      </details>
+      <details>
+        <summary>How long is a lesson, and how much does it cost?</summary>
+        <div class="faq-body"><p>Private lessons usually run about an hour. Pricing depends on the format (private, small group, school clinic, or event), so send a booking request and Mike will reply with options and prices. Nobody is turned away over cost; ask about sponsored lessons.</p></div>
+      </details>
+      <details>
+        <summary>What ages do you work with?</summary>
+        <div class="faq-body"><p>Everyone from kindergarten through retirees. Elementary and middle school students are a specialty, and adults returning to the game after an injury or a long break are always welcome.</p></div>
+      </details>
+      <details>
+        <summary>What happens if it rains?</summary>
+        <div class="faq-body"><p>Light rain is golf weather. Heavy rain, lightning, or extreme cold means we reschedule at no charge. In winter, ask about indoor options.</p></div>
+      </details>
+      <details>
+        <summary>Can a parent, aide, or caregiver stay for the lesson?</summary>
+        <div class="faq-body"><p>Absolutely. Family members, aides, and caregivers are welcome to watch or join in. For school clinics, teachers and aides stay with their students throughout.</p></div>
+      </details>
+      <details>
+        <summary>How big are the groups?</summary>
+        <div class="faq-body"><p>Groups of 1 to 5 work directly with Mike. For 6 to 10 or more, additional instructors join so every student gets individual attention.</p></div>
+      </details>
+      <details>
+        <summary>How do I book?</summary>
+        <div class="faq-body"><p>Use the <a href="#book">booking form</a>, or call or text (847) 708-7833. Mike replies within a day or two to set a time.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="partners">
+  <div class="wrap">
+    <div class="section-head rv">
+      <p class="kicker">Partners and resources</p>
+      <h2>Organizations we work alongside.</h2>
+      <p class="lead">Adaptive golf is a community. These groups run programs, competitions, and resources worth knowing about.</p>
+    </div>
+    <div class="partners rv">
+      <a class="partner" href="https://www.usaga.org" target="_blank" rel="noopener">
+        <strong>United States Adaptive Golf Alliance</strong>
+        <span>The national body for adaptive golf in the U.S., with member programs, events, and the U.S. Adaptive Open pathway.</span>
+        <small>usaga.org</small>
+      </a>
+      <a class="partner" href="https://glasa.org" target="_blank" rel="noopener">
+        <strong>Great Lakes Adaptive Sports Association</strong>
+        <span>Lake Forest based adaptive sports programs for youth, adults, and veterans across the North Shore.</span>
+        <small>glasa.org</small>
+      </a>
+      <a class="partner" href="https://www.pgareach.org" target="_blank" rel="noopener">
+        <strong>PGA REACH and PGA HOPE</strong>
+        <span>The PGA of America's foundation, including PGA HOPE, its free golf program for veterans with disabilities.</span>
+        <small>pgareach.org</small>
+      </a>
+      <a class="partner" href="https://www.edgagolf.com" target="_blank" rel="noopener">
+        <strong>EDGA</strong>
+        <span>The international adaptive golf body, with rules guidance and a worldwide ranking for golfers with disabilities.</span>
+        <small>edgagolf.com</small>
+      </a>
+      <a class="partner" href="https://www.soill.org" target="_blank" rel="noopener">
+        <strong>Special Olympics Illinois</strong>
+        <span>Year-round sports training and competition, including golf, for athletes with intellectual disabilities.</span>
+        <small>soill.org</small>
+      </a>
+      <a class="partner" href="https://www.pdhp.org" target="_blank" rel="noopener">
+        <strong>Park District of Highland Park</strong>
+        <span>Local courses, ranges, and recreation programs in our home community.</span>
+        <small>pdhp.org</small>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -853,6 +324,10 @@
         <a class="btn btn-outline btn-lg" href="tel:+18477087833">Call or text (847) 708-7833</a>
       </div>
       <p class="contact-note">Prefer email? <a href="mailto:mikesamson65@yahoo.com">mikesamson65@yahoo.com</a><br>Serving Chicago's North Shore. Lessons happen at local courses and ranges; school clinics come to your gym or field.</p>
+      <div class="resources">
+        <a class="btn btn-light" href="/flyer.pdf" download>Download the flyer (PDF)</a>
+        <a class="btn btn-outline" href="/accessibility.html">Accessibility</a>
+      </div>
     </div>
     <aside class="book-card" id="contact">
       <form id="book-form" novalidate data-endpoint="https://formspree.io/f/mjyganjg">
@@ -919,7 +394,7 @@
   <div class="wrap footer-grid">
     <div>
       <div class="brand-foot">
-        <img src="images/logo.webp" alt="">
+        <img src="/images/logo.webp" alt="">
         <span>Adapt<b>2</b>Golf</span>
       </div>
       <p>Inclusive Golf Academy<br>Adapt. Learn. Play.</p>
@@ -929,14 +404,17 @@
       <a href="tel:+18477087833">(847) 708-7833</a>
       <a href="mailto:mikesamson65@yahoo.com">mikesamson65@yahoo.com</a>
       <span>Chicago's North Shore, Illinois</span>
+      <a class="small-note" href="mailto:mikesamson65@yahoo.com?subject=Media%20inquiry%20for%20Adapt2Golf">Media and press: email Mike with "Media inquiry" in the subject</a>
     </div>
     <div class="footer-col">
       <h4>Site</h4>
-      <a href="#mission">Mission</a>
-      <a href="#programs">Programs</a>
-      <a href="#how">How it works</a>
-      <a href="#mike">Meet Mike</a>
-      <a href="#book">Book a lesson</a>
+      <a href="/programs/adaptive-lessons.html">Adaptive golf lessons</a>
+      <a href="/programs/school-clinics.html">School clinics</a>
+      <a href="/programs/events.html">Tournaments and events</a>
+      <a href="#faq">FAQ</a>
+      <a href="#partners">Partners</a>
+      <a href="/accessibility.html">Accessibility</a>
+      <a href="/flyer.pdf" download>Printable flyer (PDF)</a>
     </div>
   </div>
   <div class="wrap footer-bottom">&copy; 2026 Adapt2Golf Inclusive Golf Academy &middot; adapt2golf.org</div>
