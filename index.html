@@ -14,25 +14,28 @@
 <link rel="icon" type="image/webp" href="images/logo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
 <script>document.documentElement.className += ' js';</script>
 <style>
   :root {
     color-scheme: dark;
-    --bg: #0E1A2B;
-    --bg-alt: #13233C;
-    --bg-deep: #0A1320;
-    --card: #172A44;
+    --bg: #0C1726;
+    --bg-alt: #111F33;
+    --bg-deep: #08111D;
+    --card: #152840;
+    --card-raised: #1A3050;
     --line: rgba(255,255,255,0.10);
     --heading: #FFFFFF;
-    --ink: #D8E0E9;
-    --ink-soft: #A7B3C2;
-    --green: #2F8A44;
-    --green-dark: #3A9E52;
-    --green-bright: #5CC271;
-    --sky: #6CC0F0;
-    --font-head: 'Archivo', 'Arial', sans-serif;
-    --font-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+    --ink: #D6DEE8;
+    --ink-soft: #9FACBD;
+    --green: #2E8B45;
+    --green-dark: #37A052;
+    --green-bright: #5FC774;
+    --sand: #E9C46A;
+    --sand-soft: #F2DA9A;
+    --sky: #E9C46A;
+    --font-head: 'Barlow Condensed', 'Arial Narrow', 'Arial', sans-serif;
+    --font-body: 'Barlow', 'Segoe UI', 'Helvetica Neue', sans-serif;
     --wrap: 1140px;
   }
 
@@ -55,10 +58,10 @@
     margin: 0 0 0.6em;
     text-wrap: balance;
   }
-  h1 { font-size: clamp(2.2rem, 5vw, 3.9rem); font-weight: 800; letter-spacing: -0.025em; }
-  h2 { font-size: clamp(1.75rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; }
-  h3 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; }
-  h4 { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
+  h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 800; letter-spacing: -0.01em; text-transform: uppercase; line-height: 0.98; }
+  h2 { font-size: clamp(2rem, 3.6vw, 2.9rem); font-weight: 700; letter-spacing: 0; line-height: 1.05; }
+  h3 { font-size: 1.45rem; font-weight: 700; letter-spacing: 0.01em; }
+  h4 { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; }
   p { margin: 0 0 1em; }
 
   .wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: 24px; }
@@ -68,9 +71,9 @@
 
   .kicker {
     font-family: var(--font-head);
-    font-size: 0.78rem;
+    font-size: 0.95rem;
     font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--sky);
     margin-bottom: 12px;
@@ -80,21 +83,23 @@
 
   /* ---- Buttons ---- */
   .btn {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     font-family: var(--font-head);
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 1rem;
     padding: 12px 22px;
-    border-radius: 6px;
+    border-radius: 4px;
     text-decoration: none;
     border: 2px solid transparent;
     transition: background 0.18s, border-color 0.18s, color 0.18s;
     white-space: nowrap;
   }
-  .btn-lg { padding: 15px 28px; font-size: 1.05rem; }
+  .btn-lg { padding: 15px 30px; font-size: 1.12rem; }
   .btn-green { background: var(--green); color: #fff; }
   .btn-green:hover { background: var(--green-dark); }
   .btn-light { background: #fff; color: var(--bg); }
@@ -150,14 +155,15 @@
   .brand-text {
     font-family: var(--font-head);
     font-weight: 800;
-    font-size: 1.4rem;
+    font-size: 1.7rem;
+    text-transform: uppercase;
     line-height: 1;
     letter-spacing: -0.01em;
     display: flex;
     flex-direction: column;
     gap: 4px;
   }
-  .brand-text b { color: var(--sky); font-weight: 800; }
+  .brand-text b { color: var(--sand); font-weight: 800; }
   .brand-text small {
     font-family: var(--font-body);
     font-weight: 600;
@@ -170,14 +176,16 @@
   .menu a:not(.btn) {
     font-family: var(--font-head);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     color: var(--heading);
     text-decoration: none;
     padding: 6px 0;
     border-bottom: 2px solid transparent;
     transition: border-color 0.18s;
   }
-  .menu a:not(.btn):hover { border-bottom-color: var(--green-bright); }
+  .menu a:not(.btn):hover { border-bottom-color: var(--sand); }
   .nav-toggle {
     display: none;
     font-family: var(--font-head);
@@ -223,14 +231,14 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 42%;
+    object-position: center 60%;
   }
   .hero-shade {
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, rgba(10,19,32,0.96) 0%, rgba(10,19,32,0.84) 38%, rgba(10,19,32,0.5) 100%),
-      linear-gradient(0deg, var(--bg) 0%, rgba(14,26,43,0) 26%);
+      linear-gradient(90deg, rgba(8,17,29,0.94) 0%, rgba(8,17,29,0.78) 42%, rgba(8,17,29,0.35) 100%),
+      linear-gradient(0deg, var(--bg) 0%, rgba(12,23,38,0) 30%);
   }
   .hero-inner {
     position: relative;
@@ -239,13 +247,13 @@
     gap: 52px;
     align-items: center;
   }
-  .hero h1 { font-size: clamp(2.1rem, 4vw, 3.3rem); line-height: 1.08; margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(2.8rem, 5.2vw, 4.4rem); margin-bottom: 18px; }
   .hero .lead { color: rgba(255,255,255,0.9); max-width: 540px; margin-bottom: 30px; }
   .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
   .hero-video {
     position: relative;
     aspect-ratio: 16 / 9;
-    border-radius: 14px;
+    border-radius: 8px;
     overflow: hidden;
     background: var(--bg-deep);
     border: 1px solid rgba(255,255,255,0.16);
@@ -270,7 +278,8 @@
     display: block;
     font-family: var(--font-head);
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.02em;
     color: #fff;
     margin-bottom: 3px;
   }
@@ -371,30 +380,28 @@
     width: 100%;
     aspect-ratio: 4 / 3.3;
     object-fit: cover;
-    border-radius: 10px;
-    filter: saturate(0.88);
+    border-radius: 6px;
   }
-  /* The stock photos were shot in different light; a thin navy wash ties them together. */
   .media::after, .card-img::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(14,26,43,0.2);
+    background: rgba(12,23,38,0.08);
     pointer-events: none;
   }
-  .media::after { border-radius: 10px; }
+  .media::after { border-radius: 6px; }
   .pull {
     margin: 28px 0 0;
     padding: 4px 0 4px 22px;
-    border-left: 3px solid var(--green-bright);
+    border-left: 3px solid var(--sand);
     font-family: var(--font-head);
     font-weight: 600;
-    font-size: 1.15rem;
+    font-size: 1.45rem;
     line-height: 1.5;
     letter-spacing: -0.01em;
     color: var(--heading);
   }
-  .pull strong { color: var(--green-bright); font-weight: 700; }
+  .pull strong { color: var(--sand); font-weight: 700; }
   @media (max-width: 820px) {
     .split-media { grid-template-columns: 1fr; gap: 32px; }
     .split-media.reverse > :first-child { order: 0; }
@@ -409,7 +416,7 @@
   .card {
     background: var(--card);
     border: 1px solid var(--line);
-    border-radius: 10px;
+    border-radius: 6px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -418,19 +425,18 @@
   .card-img img {
     width: 100%; height: 100%;
     object-fit: cover;
-    filter: saturate(0.88);
-    transition: transform 0.5s ease;
   }
-  .card:hover .card-img img { transform: scale(1.04); }
   .card-body { padding: 24px 24px 26px; display: flex; flex-direction: column; flex: 1; }
   .card-body h3 { margin-bottom: 8px; }
   .card-body p { color: var(--ink-soft); margin-bottom: 18px; flex: 1; }
   .card-body a {
     font-family: var(--font-head);
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     text-decoration: none;
-    color: var(--green-bright);
+    color: var(--sand);
   }
   .card-body a:hover { text-decoration: underline; }
   @media (max-width: 900px) { .cards { grid-template-columns: 1fr; max-width: 520px; } }
@@ -451,11 +457,11 @@
     justify-content: center;
     width: 46px; height: 46px;
     border-radius: 50%;
-    border: 2px solid var(--green-bright);
-    color: var(--green-bright);
+    border: 2px solid var(--sand);
+    color: var(--sand);
     font-family: var(--font-head);
     font-weight: 700;
-    font-size: 1.05rem;
+    font-size: 1.25rem;
     margin-bottom: 18px;
   }
   .steps h3 { margin-bottom: 8px; }
@@ -466,14 +472,15 @@
   .profile {
     background: var(--card);
     border: 1px solid var(--line);
-    border-radius: 10px;
+    border-radius: 6px;
     padding: 32px 32px 28px;
   }
   .profile-name {
     font-family: var(--font-head);
     font-weight: 800;
-    font-size: 1.55rem;
-    letter-spacing: -0.02em;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
     color: var(--heading);
     margin: 0 0 4px;
   }
@@ -488,10 +495,10 @@
   .profile-facts dt {
     font-family: var(--font-head);
     font-weight: 700;
-    font-size: 0.72rem;
+    font-size: 0.85rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--sky);
+    color: var(--sand);
     margin-bottom: 3px;
   }
   .profile-facts dd { margin: 0; color: var(--ink); }
@@ -512,8 +519,8 @@
     position: absolute;
     left: 0; top: 9px;
     width: 12px; height: 12px;
-    border-radius: 3px;
-    background: var(--sky);
+    border-radius: 2px;
+    background: var(--sand);
   }
 
   /* ---- Statement band ---- */
@@ -531,21 +538,21 @@
     inset: 0;
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: center 31%;
+    object-position: center 55%;
   }
   .band::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(10,19,32,0.7);
+    background: linear-gradient(90deg, rgba(8,17,29,0.82) 0%, rgba(8,17,29,0.55) 60%, rgba(8,17,29,0.3) 100%);
   }
   .band-content { position: relative; z-index: 1; padding-block: 72px; max-width: 820px; }
   .band-quote {
     font-family: var(--font-head);
     font-weight: 700;
-    font-size: clamp(1.5rem, 3.2vw, 2.3rem);
-    line-height: 1.28;
-    letter-spacing: -0.02em;
+    font-size: clamp(1.9rem, 3.8vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: 0;
     margin-bottom: 16px;
     text-wrap: balance;
   }
@@ -562,21 +569,54 @@
   /* ---- Contact ---- */
   .contact-actions { display: flex; gap: 14px; flex-wrap: wrap; margin: 26px 0 18px; }
   .contact-note { color: var(--ink-soft); font-size: 0.98rem; }
-  .info-card {
+  /* ---- Booking form ---- */
+  .book-card {
     background: var(--card);
     border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 30px 30px 24px;
+    border-radius: 6px;
+    padding: 30px;
   }
-  .info-card h3 { margin-bottom: 16px; }
-  .info-card dl { margin: 0; }
-  .info-card dt {
+  .book-card h3 { margin-bottom: 4px; }
+  .book-card .form-note { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 20px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-grid .full { grid-column: 1 / -1; }
+  .field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .field label {
     font-family: var(--font-head);
-    font-weight: 700;
-    color: var(--heading);
-    margin-top: 14px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
   }
-  .info-card dd { margin: 4px 0 0; color: var(--ink-soft); }
+  .field input, .field select, .field textarea {
+    font: inherit;
+    font-size: 1rem;
+    color: var(--heading);
+    background: var(--bg-deep);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 4px;
+    padding: 11px 12px;
+    width: 100%;
+    min-width: 0;
+  }
+  .field select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E9C46A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px; padding-right: 36px; }
+  .field textarea { min-height: 110px; resize: vertical; }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--sand); outline-offset: 1px; border-color: var(--sand); }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(214,222,232,0.45); }
+  .form-foot { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
+  .form-foot .btn { width: 100%; }
+  .form-status { font-size: 0.95rem; color: var(--ink-soft); margin: 0; min-height: 1.4em; }
+  .form-status.ok { color: var(--green-bright); font-weight: 600; }
+  .form-status.err { color: #F0A58A; }
+  .book-done {
+    text-align: center;
+    padding: 28px 10px;
+  }
+  .book-done svg { width: 54px; height: 54px; margin-bottom: 12px; }
+  .book-done h3 { margin-bottom: 8px; }
+  .book-done p { color: var(--ink-soft); margin: 0; }
+  @media (max-width: 560px) { .form-grid { grid-template-columns: 1fr; } .book-card { padding: 22px 18px; } }
 
   /* ---- Footer ---- */
   .footer { background: var(--bg-deep); color: rgba(255,255,255,0.72); padding-block: 56px 28px; border-top: 1px solid var(--line); }
@@ -592,11 +632,11 @@
   .brand-foot span {
     font-family: var(--font-head);
     font-weight: 800;
-    font-size: 1.35rem;
-    letter-spacing: -0.01em;
+    font-size: 1.6rem;
+    text-transform: uppercase;
     color: #fff;
   }
-  .brand-foot b { color: var(--sky); }
+  .brand-foot b { color: var(--sand); }
   .footer h4 { color: #fff; margin-bottom: 14px; }
   .footer-col { display: grid; gap: 8px; align-content: start; }
   .footer-col a, .footer-col span { color: rgba(255,255,255,0.72); text-decoration: none; }
@@ -635,13 +675,13 @@
       <a href="#programs">Programs</a>
       <a href="#how">How it works</a>
       <a href="#mike">Meet Mike</a>
-      <a class="btn btn-green" href="#contact">Book a lesson</a>
+      <a class="btn btn-green" href="#book">Book a lesson</a>
     </nav>
   </div>
 </header>
 
 <section class="hero" id="top">
-  <img class="hero-img" src="images/statement.jpg" alt="">
+  <img class="hero-img" src="images/hero-sunrise.jpg" alt="">
   <div class="hero-shade"></div>
   <div class="wrap hero-inner">
     <div>
@@ -649,7 +689,7 @@
       <h1>Everyone deserves a swing.</h1>
       <p class="lead">Adaptive golf instruction for people with disabilities, and inclusive clinics for schools, across Chicago&rsquo;s North Shore. Whatever you bring to the tee, we adapt the game to you.</p>
       <div class="hero-actions">
-        <a class="btn btn-green btn-lg" href="#contact">Book a lesson</a>
+        <a class="btn btn-green btn-lg" href="#book">Book a lesson</a>
         <a class="btn btn-outline btn-lg" href="#programs">See programs</a>
       </div>
     </div>
@@ -695,7 +735,7 @@
 <section class="section alt" id="mission">
   <div class="wrap split-media rv">
     <figure class="media">
-      <img src="images/mission.jpg" alt="A golfer lining up a shot on the fairway">
+      <img src="images/mission-group.jpg" alt="A group of golfers together on the green">
     </figure>
     <div>
       <p class="kicker">Our mission</p>
@@ -716,27 +756,27 @@
     </div>
     <div class="cards rv">
       <article class="card">
-        <div class="card-img"><img src="images/prog-adaptive.jpg" alt="Close-up of a golfer addressing the ball"></div>
+        <div class="card-img"><img src="images/prog-adaptive.jpg" alt="A golfer working on a chip shot on the course"></div>
         <div class="card-body">
           <h3>Adaptive golf lessons</h3>
           <p>One-on-one and small-group instruction for golfers with physical disabilities. Adapted equipment, adapted technique, and standing golf carts that let wheelchair users swing from their feet.</p>
-          <a href="#contact">Ask about lessons &rarr;</a>
+          <a href="#book">Ask about lessons &rarr;</a>
         </div>
       </article>
       <article class="card">
-        <div class="card-img"><img src="images/prog-schools.jpg" alt="A young golfer practicing on the range"></div>
+        <div class="card-img"><img src="images/prog-schools.jpg" alt="A young golfer hitting balls at the driving range"></div>
         <div class="card-body">
           <h3>School clinics</h3>
           <p>On-site clinics for elementary and middle schools, run in your gym or on your field. Small groups of 1 to 5 with Mike directly; extra instructors come in for groups of 6 or more. Works as PE, after-school, or a one-off intro day.</p>
-          <a href="#contact">Bring a clinic to your school &rarr;</a>
+          <a href="#book">Bring a clinic to your school &rarr;</a>
         </div>
       </article>
       <article class="card">
-        <div class="card-img"><img src="images/prog-events.jpg" alt="A flag on the putting green"></div>
+        <div class="card-img"><img src="images/prog-events.jpg" alt="A group of golfers walking the course with their bags"></div>
         <div class="card-body">
           <h3>Tournaments and events</h3>
           <p>Inclusive tournament formats, school championship days, community fundraisers, and corporate outings with a purpose. We build the program, run the instruction, and handle the day.</p>
-          <a href="#contact">Plan an event &rarr;</a>
+          <a href="#book">Plan an event &rarr;</a>
         </div>
       </article>
     </div>
@@ -796,33 +836,81 @@
 </section>
 
 <section class="band">
-  <img src="images/hero.jpg" alt="">
+  <img src="images/statement-sunset.jpg" alt="">
   <div class="wrap band-content rv">
     <p class="band-quote">&ldquo;It&rsquo;s not about how far you hit it. It&rsquo;s about the fact that you did.&rdquo;</p>
     <p class="band-attr">Adapt2Golf &middot; Adapt. Learn. Play.</p>
   </div>
 </section>
 
-<section class="section" id="contact">
+<section class="section" id="book">
   <div class="wrap split-media rv">
     <div>
-      <p class="kicker">Get in touch</p>
+      <p class="kicker">Book a lesson</p>
       <h2>Ready to give it a shot?</h2>
-      <p class="lead">Individuals, families, schools, and organizations are all welcome. Reach out and we'll work out the rest together.</p>
+      <p class="lead">Individuals, families, schools, and organizations are all welcome. Send a few details and Mike will get back to you within a day or two to set up a time.</p>
       <div class="contact-actions">
-        <a class="btn btn-green btn-lg" href="tel:+18477087833">Call or text (847) 708-7833</a>
-        <a class="btn btn-light btn-lg" href="mailto:mikesamson65@yahoo.com">Email Mike</a>
+        <a class="btn btn-outline btn-lg" href="tel:+18477087833">Call or text (847) 708-7833</a>
       </div>
-      <p class="contact-note">Serving Chicago's North Shore. Lessons happen at local courses and ranges; school clinics come to your gym or field.</p>
+      <p class="contact-note">Prefer email? <a href="mailto:mikesamson65@yahoo.com">mikesamson65@yahoo.com</a><br>Serving Chicago's North Shore. Lessons happen at local courses and ranges; school clinics come to your gym or field.</p>
     </div>
-    <aside class="info-card">
-      <h3>What to include</h3>
-      <dl>
-        <dt>For yourself or a family member</dt>
-        <dd>What you'd like to try, any mobility considerations, and whether you've played before.</dd>
-        <dt>For a school or organization</dt>
-        <dd>Grade levels, group size, the space you have (gym, field, or course), and dates that could work.</dd>
-      </dl>
+    <aside class="book-card" id="contact">
+      <form id="book-form" novalidate data-endpoint="https://formspree.io/f/YOUR_FORM_ID">
+        <h3>Request a lesson or clinic</h3>
+        <p class="form-note">Takes about a minute. No experience needed.</p>
+        <div class="form-grid">
+          <div class="field">
+            <label for="bf-name">Your name</label>
+            <input id="bf-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="bf-phone">Phone</label>
+            <input id="bf-phone" name="phone" type="tel" autocomplete="tel" placeholder="(847) 555-0100">
+          </div>
+          <div class="field full">
+            <label for="bf-email">Email</label>
+            <input id="bf-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="bf-for">This is for</label>
+            <select id="bf-for" name="booking_for" required>
+              <option value="">Choose one</option>
+              <option>Myself</option>
+              <option>My child or family member</option>
+              <option>A school</option>
+              <option>An organization or group</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="bf-program">Interested in</label>
+            <select id="bf-program" name="program" required>
+              <option value="">Choose one</option>
+              <option>Adaptive golf lesson</option>
+              <option>School clinic</option>
+              <option>Tournament or event</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="bf-dates">Dates or times that could work</label>
+            <input id="bf-dates" name="preferred_dates" type="text" placeholder="Weekday afternoons, Saturday mornings, late October...">
+          </div>
+          <div class="field full">
+            <label for="bf-notes">Tell Mike a little about you</label>
+            <textarea id="bf-notes" name="message" placeholder="Golf experience, any mobility considerations, group size or grade levels, the space you have (gym, field, course)..."></textarea>
+          </div>
+        </div>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+        <div class="form-foot">
+          <button class="btn btn-green btn-lg" type="submit" id="bf-submit">Send request</button>
+          <p class="form-status" id="bf-status" aria-live="polite"></p>
+        </div>
+      </form>
+      <div class="book-done" id="book-done" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5FC774" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>
+        <h3>Request sent</h3>
+        <p>Thanks! Mike will reach out within a day or two to find a time that works.</p>
+      </div>
     </aside>
   </div>
 </section>
@@ -848,7 +936,7 @@
       <a href="#programs">Programs</a>
       <a href="#how">How it works</a>
       <a href="#mike">Meet Mike</a>
-      <a href="#contact">Contact</a>
+      <a href="#book">Book a lesson</a>
     </div>
   </div>
   <div class="wrap footer-bottom">&copy; 2026 Adapt2Golf Inclusive Golf Academy &middot; adapt2golf.org</div>
@@ -892,6 +980,44 @@
     if (!entry.isIntersecting) { video.pause(); }
     else if (!userPaused) { play(); }
   }, { threshold: 0.15 }).observe(video);
+
+  // Booking form: posts to Formspree. Until the form ID is set, it opens an email instead.
+  const form = document.getElementById('book-form');
+  const status = document.getElementById('bf-status');
+  const submitBtn = document.getElementById('bf-submit');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      status.className = 'form-status err';
+      status.textContent = 'Please fill in your name, email, and the two choices above.';
+      return;
+    }
+    const data = new FormData(form);
+    const endpoint = form.dataset.endpoint;
+    if (endpoint.includes('YOUR_FORM_ID')) {
+      const lines = [];
+      for (const [k, v] of data.entries()) { if (k !== '_gotcha' && v) lines.push(k.replace(/_/g, ' ') + ': ' + v); }
+      const subject = encodeURIComponent('Adapt2Golf request from ' + data.get('name'));
+      window.location.href = 'mailto:mikesamson65@yahoo.com?subject=' + subject + '&body=' + encodeURIComponent(lines.join('\n'));
+      status.className = 'form-status';
+      status.textContent = 'Opening your email app with the request filled in.';
+      return;
+    }
+    submitBtn.disabled = true;
+    status.className = 'form-status';
+    status.textContent = 'Sending...';
+    try {
+      const res = await fetch(endpoint, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (!res.ok) throw new Error('bad status');
+      form.hidden = true;
+      document.getElementById('book-done').hidden = false;
+    } catch (err) {
+      submitBtn.disabled = false;
+      status.className = 'form-status err';
+      status.textContent = 'That didn\'t go through. Please try again, or call or text (847) 708-7833.';
+    }
+  });
 
   // Only sections below the first screen animate in; everything else is visible at rest.
   const below = [...document.querySelectorAll('.rv')]
